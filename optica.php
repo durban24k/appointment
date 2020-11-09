@@ -7,9 +7,9 @@
      $input=$_POST["input"];
 
      // We use the explode function t split the string text response into an array
-     $string_explode=explode("*",$input);
+     $data_array=explode("*",$input);
 
-     $level=count($string_explode);
+     $level=count($data_array);
 
      // Entry User Interface - 0
      if($input==""){
@@ -18,7 +18,7 @@
           $response.="1. CONTINUE";
           
      // Name Capture Interface - 1 
-     }else if($string_explode[0]==1 && $level==1){
+     }else if($data_array[0]==1 && $level==1){
           $response="CON Select the City or Town:";
           $response.="1. Nairobi\n";
           $response.="2. Eldoret\n";
@@ -31,7 +31,7 @@
           $response.="9. Meru\n";
 
      // Province Interface - 1*name
-     }else if($string_explode[1]==1 && $level==2){
+     }else if($data_array[1]==1 && $level==2){
           $response="CON Select Nearest Optica:\n";
           $response.="1. York House-Moi Avenue\n";
           $response.="2. Optica House-Moi Avenue\n";
@@ -42,12 +42,12 @@
           $response.="7. Thika Road Mall";
 
      // Location Interface -1*name*1
-     }else if($string_explode[0]==1 && !($string_explode[1]=="") && !($string_explode[2]=="") && $level==3){
+     }else if($data_array[0]==1 && !($data_array[1]=="") && !($data_array[2]=="") && $level==3){
           $response="CON Enter Appointment Date:\n";
           $response.="Date Format: DD-MM-YYYY\n";
 
      //The service request, is based on the location selected on Input 1*1 above or any location selected - 1*name*1*1
-     }else if($string_explode[0]==1 && !($string_explode[1]=="") && !($string_explode[2]=="") && !($string_explode[3]=="") && $level==4){
+     }else if($data_array[0]==1 && !($data_array[1]=="") && !($data_array[2]=="") && !($data_array[3]=="") && $level==4){
           $response="CON Select Time Range:\n";
           $response.="1. 10am to 11am\n";
           $response.="2. 11am to 12pm\n";
@@ -58,29 +58,35 @@
           $response.="7. 3pm to 4pm\n";
           $response.="8. 4pm to 5:30pm";
 
-     }else if($string_explode[0]==1 && !($string_explode[1]=="") && !($string_explode[2]=="") && !($string_explode[3]=="") && !($string_explode[4]=="") && $level==5){
+     }else if($data_array[0]==1 && !($data_array[1]=="") && !($data_array[2]=="") && !($data_array[3]=="") && !($data_array[4]=="") && $level==5){
           $response="CON Select Gender:\n";
           $response.="1. Female\n";
           $response.="2. Male";
 
-     }else if($string_explode[0]==1 && !($string_explode[1]=="") && !($string_explode[2]=="") && !($string_explode[3]=="") && !($string_explode[4]=="") && !($string_explode[5]=="") && $level==6){
+     }else if($data_array[0]==1 && !($data_array[1]=="") && !($data_array[2]=="") && !($data_array[3]=="") && !($data_array[4]=="") && !($data_array[5]=="") && $level==6){
           $response="CON Enter Your Name:\n";
-          $name="";
-
-     }else if($string_explode[0]==1 && !($string_explode[1]=="") && !($string_explode[2]=="") && !($string_explode[3]=="") && !($string_explode[4]=="") && !($string_explode[5]=="") && !($string_explode[6]=="") && $level==7){
+          
+     }else if($data_array[0]==1 && !($data_array[1]=="") && !($data_array[2]=="") && !($data_array[3]=="") && !($data_array[4]=="") && !($data_array[5]=="") && !($data_array[6]=="") && $level==7){
           $response="CON Enter Your Phone Number:\n";
-          $phoneNo="";
 
-     }else if($string_explode[0]==1 && !($string_explode[1]=="") && !($string_explode[2]=="") && !($string_explode[3]=="") && !($string_explode[4]=="") && !($string_explode[5]=="") && !($string_explode[6]=="") && !($string_explode[7]=="") &&  $level==8){
+     }else if($data_array[0]==1 && !($data_array[1]=="") && !($data_array[2]=="") && !($data_array[3]=="") && !($data_array[4]=="") && !($data_array[5]=="") && !($data_array[6]=="") && !($data_array[7]=="") &&  $level==8){
           $response="CON Preferred Mode of payment.\n";
           $response.="1. CASH\n";
           $response.="2. MPESA\n";
           $response.="3. INSURANCE";
           
-     }else if($string_explode[0]==1 && !($string_explode[1]=="") && !($string_explode[2]=="") && !($string_explode[3]=="") && !($string_explode[4]=="") && !($string_explode[5]=="") && !($string_explode[6]=="") && !($string_explode[7]=="") && !($string_explode[8]=="") &&  $level==9){
+     }else if($data_array[0]==1 && !($data_array[1]=="") && !($data_array[2]=="") && !($data_array[3]=="") && !($data_array[4]=="") && !($data_array[5]=="") && !($data_array[6]=="") && !($data_array[7]=="") && !($data_array[8]=="") &&  $level==9){
           $response="END Thank you for requesting an appointment with us.\n";
           $response.="Ticket: ".$ticketNo;
           
      }
+     $town=$data_array[1];
+     $opticaLoc=$data_array[2];
+     $appDate=$data_array[3];
+     $time=$data_array[4];
+     $gender=$data_array[5];
+     $name=$data_array[6];
+     $phoneNo=$data_array[7];
+     $paymentMode=$data_array[8];
 
 ?>
